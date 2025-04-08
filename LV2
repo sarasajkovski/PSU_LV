@@ -1,1 +1,70 @@
 ZADATAK 1:
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.array([1, 2, 3, 3, 1])
+y = np.array([1, 2, 2, 1, 1])
+plt.xlim(0, 4)  
+plt.ylim(0, 4)   
+plt.plot(x, y, color='g', linewidth = 1, marker = 'o')  
+
+plt.title("Zadatak 1")
+plt.xlabel("x os")
+plt.ylabel("y os")
+
+plt.show()
+
+
+ZADATAK 2:
+import numpy as np
+import matplotlib.pyplot as plt
+# a)
+data = np.loadtxt(open("mtcars.csv", "rb"), 
+                  usecols=(1, 2, 3, 4, 5, 6), 
+                  delimiter=",", skiprows=1)
+
+ # b)
+mpg = data[:, 0]   
+cyl = data[:, 1]   
+hp = data[:, 3]   
+wt = data[:, 5]   
+
+plt.scatter(hp, mpg)
+plt.xlabel("Konjske snage (hp)")
+plt.ylabel("Potrošnja (mpg)")
+plt.title("Potrošnja automobila u odnosu na konjske snage")
+plt.grid(True)
+plt.show()
+
+# c)
+plt.scatter(hp, mpg, s=wt * 50, alpha=0.7)  
+plt.xlabel("Konjske snage (hp)")
+plt.ylabel("Potrošnja (mpg)")
+plt.title("Potrošnja vs. HP (veličina = težina)")
+plt.grid(True)
+plt.show()
+
+# d)
+min_mpg = np.min(mpg)
+max_mpg = np.max(mpg)
+mean_mpg = np.mean(mpg)
+
+print(f"Minimalna potrošnja: {min_mpg:.2f} mpg")
+print(f"Maksimalna potrošnja: {max_mpg:.2f} mpg")
+print(f"Srednja potrošnja: {mean_mpg:.2f} mpg")
+
+# c)
+# Filtriramo redove s 6 cilindara
+mpg_6cyl = mpg[cyl == 6]
+
+min_mpg_6 = np.min(mpg_6cyl)
+max_mpg_6 = np.max(mpg_6cyl)
+mean_mpg_6 = np.mean(mpg_6cyl)
+
+printf("6 cilindara")
+print(f" Minimalna potrošnja: {min_mpg_6:.2f} mpg")
+print(f" Maksimalna potrošnja: {max_mpg_6:.2f} mpg")
+print(f" Srednja potrošnja: {mean_mpg_6:.2f} mpg")
+
+
+ZADATAK 3:
