@@ -1,8 +1,6 @@
-import numpy as np
-import sklearn.linear_model as lm
-
-linearModel = lm.LinearRegression()
-
-linearModel.fit(xtrain,ytrain)
-
-ytest_pred = linearModel.predict(xtest)
+#Podjela podataka	indeksi_train, indeksi_test
+#Treniranje modela	linearModel.fit(...)
+#Regresijska funkcija	linearModel.intercept_, linearModel.coef_
+#Metoda najmanjih kvadrata	 LinearRegression()
+#Procjena modela	mean_squared_error(...)
+#Vizualizacija	plt.plot(...) 
