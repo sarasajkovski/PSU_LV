@@ -27,5 +27,6 @@ print("\nRezultati na TEST skupu:")
 print("MSE:", mean_squared_error(y_test, y_test_pred))
 print("R2:", r2_score(y_test, y_test_pred))
 
-
+# Jesu li se rezultati poboljšali?
+# Poboljšali su se jer se smanjila srednja kvadratna pogreška na testnom skupu 
 
