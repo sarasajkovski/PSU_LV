@@ -68,3 +68,75 @@ print(f" Srednja potrošnja: {mean_mpg_6:.2f} mpg")
 
 
 ZADATAK 3:
+import numpy as np
+import matplotlib.pyplot as plt
+
+img = plt.imread("tiger.png")
+img = img[:, :, 0].copy() 
+
+# a)
+bright_img = img + 0.3
+bright_img = np.clip(bright_img, 0, 1)  
+
+plt.imshow(bright_img, cmap="gray")
+plt.title("Posvijetljena slika")
+plt.show()
+
+# b)
+rotated_img = np.rot90(img, k=3)  
+plt.imshow(rotated_img, cmap="gray")
+plt.title("Rotacija 90°")
+plt.show()
+
+# c)
+mirrored_img = np.fliplr(img) 
+
+plt.imshow(mirrored_img, cmap="gray")
+plt.title("Zrcaljena slika")
+plt.show()
+
+# d)
+low_res_img = img[::10, ::10]
+
+plt.imshow(low_res_img, cmap="gray")
+plt.title("Smanjena rezolucija (x10)")
+plt.show()
+
+# e)
+h, w = img.shape
+new_img = np.zeros_like(img)
+start = w // 4
+end = w // 2
+
+new_img[:, start:end] = img[:, start:end]
+
+plt.imshow(new_img, cmap="gray")
+plt.title("Druga četvrtina slike")
+plt.show()
+
+
+ZADATAK 4:
+import numpy as np
+import matplotlib.pyplot as plt
+
+def generiraj_kvadratnu_sliku(vel_kvadrata, visina_kvadrata, sirina_kvadrata):
+    crni = np.zeros((vel_kvadrata, vel_kvadrata), dtype=np.uint8)
+    bijeli = np.ones((vel_kvadrata, vel_kvadrata), dtype=np.uint8) * 255
+    
+    redovi = []
+    for i in range(visina_kvadrata):
+        red = []
+        for j in range(sirina_kvadrata):
+            if (i + j) % 2 == 0:
+                red.append(crni)
+            else:
+                red.append(bijeli)
+        redovi.append(np.hstack(red))
+
+    slika = np.vstack(redovi)  
+    return slika
+img = generiraj_kvadratnu_sliku(vel_kvadrata=40, visina_kvadrata=8, sirina_kvadrata=8)
+
+plt.imshow(img, cmap='gray', vmin=0, vmax=255)
+plt.title("Crno-bijeli kvadrati")
+plt.show()
